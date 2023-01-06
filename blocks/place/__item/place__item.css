@@ -1,0 +1,20 @@
+.place__item {
+    margin: 0 auto;
+    margin-bottom: 20px;
+/*    margin-right: 17px;*/
+    padding: 0;
+    width: 282px;
+    height: 361px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+/*
+.place__item:last-child {
+    margin-bottom: 0;
+    margin-right: 0;
+}*/

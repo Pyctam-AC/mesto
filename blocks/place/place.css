@@ -1,0 +1,17 @@
+.place {
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 51px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 890px) {
+    .place {
+        max-width: 590px;
+        margin-top: 36px;
+    }
+}
