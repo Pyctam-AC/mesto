@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="page/index.css">
+    <link rel="stylesheet" href="./pages/index.css">
     <title>mesto</title>
 </head>
+
 <body class="page">
 
-<!--header-->
+    <!--header-->
     <header class="header">
         <img src="./images/logo_mesto.svg" class="header__logo" alt="логотип Rossia">
     </header>
 
-<!--main-->
+    <!--main-->
     <main class="content">
-    
-    <!--profile-->
+
+        <!--profile-->
         <section class="profile">
             <div class="profile__info">
                 <img src="./images/ava_kusto.jpg" class="profile__ava" alt="фото аватара">
@@ -25,78 +27,89 @@
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button class="edit-button"></button>
+                <button type="button" class="profile__edit-button"></button>
             </div>
-            <button class="add-button"></button>
-        </section>
-    
-    <!--pop-up-->
-        <section class="popup">
-            <div class="popup__container">
-                <button class="popup-close-button"></button>
-                <h3 class="popup__container-title">Редактировать профиль</h3>
-                <input id="name" type="text" value="Жак-Ив Кусто" class="popup__container-form">
-                <input id="job" type="text" value="Исследователь океана" class="popup__container-prof">
-                <button type="submit" class="popup-button">Сохранить</button>
-            </div>
+            <button type="button" class="profile__add-button"></button>
         </section>
 
-    <!--place-->
-        <ul class="place">
-            <li class="place__item">
-                <img src="./images/kirill-pershin-1088404-unsplash.jpg" class="place__img" alt="вид природы">
-                <div class="place__text">
-                    <h2 class="place__title">Карачаево-Черкессия</h2>
-                    <button class="like-button"></button>
-                </div>
-            </li>
-            <li class="place__item">
-                <img src="./images/kirill-pershin-1404681-unsplash.jpg" class="place__img" alt="вид природы">
-                <div class="place__text">
-                    <h2 class="place__title">Гора Эльбрус</h2>
-                    <button class="like-button"></button>
-                </div>
-            </li>
-            <li class="place__item">
-                <img src="./images/kirill-pershin-1556355-unsplash.jpg" class="place__img" alt="вид природы">
-                <div class="place__text">
-                    <h2 class="place__title">Домбай</h2>
-                    <button class="like-button"></button>
-                </div>
-            </li>
-            <li class="place__item">
-                <img src="./images/kirill-pershin-1556355-unsplash.jpg" class="place__img" alt="вид природы">
-                <div class="place__text">
-                    <h2 class="place__title">Гора Эльбрус</h2>
-                    <button class="like-button"></button>
-                </div>
-            </li>
-            <li class="place__item">
-                <img src="./images/kirill-pershin-1088404-unsplash.jpg" class="place__img" alt="вид природы">
-                <div class="place__text">
-                    <h2 class="place__title">Домбай</h2>
-                    <button class="like-button"></button>
-                </div>
-            </li>
-            <li class="place__item">
-                <img src="./images/kirill-pershin-1404681-unsplash.jpg" class="place__img" alt="вид природы">
-                <div class="place__text">
-                    <h2 class="place__title">Карачаево-Черкессия</h2>
-                    <button class="like-button"></button>
-                </div>
-            </li>
-        </ul>
-    <!--end place-->  
+        <!--place-->
+        <section class="place">
+            <ul class="place__card">
+                <li class="place__item">
+                    <img src="./images/img_test.jpg" class="place__img"
+                        alt="фото старинной цкркви в горах">
+                    <div class="place__text">
+                        <h2 class="place__title">Карачаево-Черкессия</h2>
+                        <button type="submit" class="like-button like-button__active"></button>
+                    </div>
+                </li>
+                <li class="place__item">
+                    <img src="./images/kirill-pershin-1404681-unsplash.jpg" class="place__img"
+                        alt="фото равниных холмов на закате">
+                    <div class="place__text">
+                        <h2 class="place__title">Гора Эльбрус</h2>
+                        <button type="submit" class="like-button"></button>
+                    </div>
+                </li>
+                <li class="place__item">
+                    <img src="./images/kirill-pershin-1556355-unsplash.jpg" class="place__img"
+                        alt="фото горы Эльюрус">
+                    <div class="place__text">
+                        <h2 class="place__title">Домбай</h2>
+                        <button type="submit" class="like-button"></button>
+                    </div>
+                </li>
+                <li class="place__item">
+                    <img src="./images/kirill-pershin-1556355-unsplash.jpg" class="place__img"
+                        alt="фото горы Эльюрус">
+                    <div class="place__text">
+                        <h2 class="place__title">Гора Эльбрус</h2>
+                        <button type="submit" class="like-button"></button>
+                    </div>
+                </li>
+                <li class="place__item">
+                    <img src="./images/kirill-pershin-1088404-unsplash.jpg" class="place__img"
+                        alt="фото старинной цкркви в горах">
+                    <div class="place__text">
+                        <h2 class="place__title">Домбай</h2>
+                        <button type="submit" class="like-button"></button>
+                    </div>
+                </li>
+                <li class="place__item">
+                    <img src="./images/kirill-pershin-1404681-unsplash.jpg" class="place__img"
+                        alt="фото равниных холмов на закате">
+                    <div class="place__text">
+                        <h2 class="place__title">Карачаево-Черкессия</h2>
+                        <button type="submit" class="like-button"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!--end place-->
 
     </main>
 
-<!--footer-->
+    <!--footer-->
     <footer class="footer">
-        <h3 class="footer__text">© 2020 Mesto Russia</h3>
+        <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
 
-<!--scripts-->
+    <!--pop-up-->
+    <div class="popup">
+        <div class="popup__container">
+            <button type="button" class="popup__close-button"></button>
+            <h3 class="popup__container-title">Редактировать профиль</h3>
+            <form name="addform" class="popup__form">
+                <input type="text" name="addname" placeholder="Введите имя и фамилию" class="popup__container-form popup__input_name">
+                <input type="text" name="addjob" placeholder="Введите вашу профессию" class="popup__container-form popup__input_job">
+                <button type="submit" class="popup__add-button">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <!--scripts-->
     <script src="./scripts/index.js"></script>
-    
+
 </body>
+
 </html>

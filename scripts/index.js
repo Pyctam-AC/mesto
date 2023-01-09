@@ -1,38 +1,36 @@
-let popup = document.querySelector('.popup');
-let open_popup = document.querySelector('.edit-button');
-let close_popup = document.querySelector('.popup-close-button');
-let addButton = document.querySelector('.popup-button');
+let popup = document.querySelector('.popup'); //страница модалки
+let open_popup = document.querySelector('.profile__edit-button'); //кнопка открытия модалки
+let close_popup = document.querySelector('.popup__close-button'); //крестик - кнопка закрытия модалки
+let addButton = document.querySelector('.popup__add-button'); //кнопка сохранить в модалке
+let nameTitle = document.querySelector('.profile__title'); //поле имени на главной странице
+let job = document.querySelector('.profile__subtitle'); //поле профессии на главной странице
+let formElement = document.querySelector('.popup__form'); //обёртка формы в HTML
+let nameInput = formElement.querySelector('.popup__input_name'); //поле ввода имени в модалке
+let jobInput = formElement.querySelector('.popup__input_job'); //поле ввода професии в модалке
+
 
 //open popup
-function openPopup () {
-    popup.style.display = 'block';
+function openPopup () {    
+    popup.classList.add('popup_opened');
+    nameInput.value = nameTitle.textContent;
+    jobInput.value = job.textContent;
 }
-
 open_popup.addEventListener('click', openPopup);
 
 //close popup
 function closePopup () {
-    popup.style.display = 'none';
+    popup.classList.remove('popup_opened');
 }
-
 close_popup.addEventListener('click', closePopup);
 
 
-//save form
+//input form
 function handleFormSubmit (evt) {
     evt.preventDefault();
 
-    let jobInput = document.querySelector('.popup__container-prof').value;
-    let nameInput = document.querySelector('.popup__container-form').value;
-    
-    let name = document.querySelector('.profile__title');
-    let job = document.querySelector('.profile__subtitle');
-
-    name.textContent = nameInput;
-    job.textContent = jobInput;
+    nameTitle.textContent = nameInput.value;
+    job.textContent = jobInput.value;
 
     closePopup ();
-
 }
-
-addButton.addEventListener('click', handleFormSubmit);
+formElement.addEventListener('submit', handleFormSubmit);

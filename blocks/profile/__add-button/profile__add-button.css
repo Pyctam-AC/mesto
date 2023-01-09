@@ -1,11 +1,11 @@
-.add-button {
+.profile__add-button {
     margin: 0;
     padding: 0;
     width: 150px;
     height: 50px;
     border: 2px solid #FFFFFF;
     border-radius: 2px;
-    background-image: url(../../images/plus_done.svg);
+    background-image: url(../../../images/plus_done.svg);
     background-repeat: no-repeat;
     background-color: inherit;
     background-position: center;
@@ -14,11 +14,11 @@
     cursor: pointer;
 }
 
-.add-button:hover {
+.profile__add-button:hover {
     opacity: 60%;
 }
 
-.add-button:active {
+.profile__add-button:active {
     width: 145px;
     background-size: 20px 20px;
 }
@@ -26,13 +26,13 @@
 
 
 @media screen and (max-width: 890px) {
-    .add-button {
+    .profile__add-button {
         margin-top: 28px;
         width: 282px;
         background-size: 16px 16px;
     }
 
-    .add-button:active {
+    .profile__add-button:active {
         width: 277px;
         background-size: 14px 14px;
     }

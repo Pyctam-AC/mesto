@@ -23,23 +23,25 @@
 
 /*pop-up*/
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup-close-button/popup-close-button.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup-button/popup-button.css);
 @import url(../blocks/popup/__container-title/popup__container-title.css);
+@import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__container-form/popup__container-form.css);
-@import url(../blocks/popup/__container-prof/popup__container-prof.css);
 
 /*place*/
 @import url(../blocks/place/place.css);
+@import url(../blocks/place/__card/place__card.css);
 @import url(../blocks/place/__item/place__item.css);
 @import url(../blocks/place/__text/place__text.css);
 @import url(../blocks/place/__title/place__title.css);
 @import url(../blocks/place/__img/place__img.css);
 
 /*buttons*/
-@import url(../blocks/edit-button/edit-button.css);
-@import url(../blocks/add-button/add-button.css);
+@import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__add-button/popup__add-button.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/like-button/like-button.css);
 
 /*footer*/

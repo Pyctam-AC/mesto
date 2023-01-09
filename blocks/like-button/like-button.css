@@ -1,7 +1,7 @@
 .like-button {
     margin: 0;
     padding: 0;
-    margin-left: 35px;
+    margin-left: 29px;
     width: 34px;
     height: 19px;
     background-image: url(../../images/like_icon.svg);
@@ -15,12 +15,4 @@
 
 .like-button:hover {
     opacity: 50%;
-}
-
-.like-button:active {
-    background-image: url(../../images/like_icon-black.svg);
-}
-
-.like-button:focus {
-    background-image: url(../../images/like_icon-black.svg);
 }

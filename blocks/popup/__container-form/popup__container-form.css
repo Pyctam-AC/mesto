@@ -1,7 +1,9 @@
 .popup__container-form {
     margin: 0 auto;
+    padding: 0;
     width: 358px;
-    margin-top: 54px;
+    margin-top: 28px;
+    padding-bottom: 11px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     font-family: 'Inter', Arial, Helvetica, sans-serif;
@@ -9,17 +11,19 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    padding-bottom: 13px;
-    color: #000000;
+    color: #000;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     outline: none;
 }
 
+.popup__container-form:first-child {
+    margin-top: 0;
+}
+
 @media screen and (max-width: 890px) {
     .popup__container-form {
-        margin-top: 75px;
         width: 238px;
         
     }

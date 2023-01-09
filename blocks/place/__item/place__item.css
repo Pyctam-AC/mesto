@@ -1,5 +1,5 @@
 .place__item {
-    margin: 0 auto;
+    margin: 0;
     margin-bottom: 20px;
 /*    margin-right: 17px;*/
     padding: 0;
@@ -13,8 +13,9 @@
     overflow: hidden;
     background-color: #FFFFFF;
 }
-/*
-.place__item:last-child {
-    margin-bottom: 0;
-    margin-right: 0;
-}*/
+
+@media screen and (max-width: 890px) {
+    .place__item {
+        margin: 0 auto 20px;
+    }
+}
