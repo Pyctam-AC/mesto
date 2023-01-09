@@ -5,8 +5,8 @@ let addButton = document.querySelector('.popup__add-button'); //кнопка с�
 let nameTitle = document.querySelector('.profile__title'); //поле имени на главной странице
 let job = document.querySelector('.profile__subtitle'); //поле профессии на главной странице
 let formElement = document.querySelector('.popup__form'); //обёртка формы в HTML
-let nameInput = formElement.querySelector('.popup__input_name'); //поле ввода имени в модалке
-let jobInput = formElement.querySelector('.popup__input_job'); //поле ввода професии в модалке
+let nameInput = formElement.querySelector('.popup__input-name'); //поле ввода имени в модалке
+let jobInput = formElement.querySelector('.popup__input-job'); //поле ввода професии в модалке
 
 
 //open popup
