@@ -10,7 +10,8 @@
   align-items: center;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #FFFFFF;
+  background-color: #FFF;
+  position: relative;
 }
 
 @media screen and (max-width: 890px) {

@@ -20,7 +20,7 @@
 
 
 .profile__edit-button:active {
-  height: 20px;
+  transform: scale(.9);
 }
 
 @media screen and (max-width: 890px) {

@@ -15,6 +15,7 @@
   text-align: center;
   color: #FFF;
   cursor: pointer;
+  transition: .3s linear;
 }
 
 .popup__add-button:hover {
@@ -23,6 +24,7 @@
 
 .popup__add-button:active {
   background-color: rgba(0, 0, 0, .7);
+  transform: scale(.95);
 }
 
 @media screen and (max-width: 890px) {

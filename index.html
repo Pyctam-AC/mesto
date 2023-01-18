@@ -36,6 +36,7 @@
     <section class="place">
       <ul class="place__card">
         <li class="place__item">
+          <button type="reset" class="place__trash"></button>
           <img src="./images/kirill-pershin-1088404-unsplash.jpg" class="place__img"
             alt="фото старинной церкви в горах">
           <div class="place__text">
@@ -44,6 +45,7 @@
           </div>
         </li>
         <li class="place__item">
+          <button type="reset" class="place__trash"></button>
           <img src="./images/kirill-pershin-1404681-unsplash.jpg" class="place__img"
             alt="фото равнинных холмов на закате">
           <div class="place__text">
@@ -52,20 +54,25 @@
           </div>
         </li>
         <li class="place__item">
-          <img src="./images/kirill-pershin-1556355-unsplash.jpg" class="place__img" alt="фото горы Эльбрус">
+          <button type="reset" class="place__trash"></button>
+          <img src="./images/kirill-pershin-1556355-unsplash.jpg" class="place__img"
+            alt="фото горы Эльбрус">
           <div class="place__text">
             <h2 class="place__title">Домбай</h2>
             <button type="button" class="like-button"></button>
           </div>
         </li>
         <li class="place__item">
-          <img src="./images/kirill-pershin-1556355-unsplash.jpg" class="place__img" alt="фото горы Эльбрус">
+          <button type="reset" class="place__trash"></button>
+          <img src="./images/kirill-pershin-1556355-unsplash.jpg" class="place__img"
+            alt="фото горы Эльбрус">
           <div class="place__text">
             <h2 class="place__title">Гора Эльбрус</h2>
             <button type="button" class="like-button"></button>
           </div>
         </li>
         <li class="place__item">
+          <button type="reset" class="place__trash"></button>
           <img src="./images/kirill-pershin-1088404-unsplash.jpg" class="place__img"
             alt="фото старинной церкви в горах">
           <div class="place__text">
@@ -74,6 +81,7 @@
           </div>
         </li>
         <li class="place__item">
+          <button type="reset" class="place__trash"></button>
           <img src="./images/kirill-pershin-1404681-unsplash.jpg" class="place__img"
             alt="фото равнинных холмов на закате">
           <div class="place__text">
@@ -92,18 +100,44 @@
     <p class="footer__text">© 2020 Mesto Russia</p>
   </footer>
 
-  <!--pop-up-->
-  <div class="popup">
+  <!--pop-up-profile-->
+  <div class="popup popup_profile">
     <div class="popup__container">
-      <button type="button" class="popup__close-button"></button>
+      <button type="button" class="popup__close-button popup__close-button_profile"></button>
       <h3 class="popup__container-title">Редактировать профиль</h3>
-      <form name="addform" class="popup__form">
+      <form name="addform" class="popup__form popup__form_profile">
         <input type="text" name="addname" placeholder="Введите имя и фамилию"
           class="popup__input popup__input_type_name">
         <input type="text" name="addjob" placeholder="Введите вашу профессию"
           class="popup__input popup__input_type_job">
         <button type="submit" class="popup__add-button">Сохранить</button>
       </form>
+    </div>
+  </div>
+
+  <!--pop-up-place-->
+  <div class="popup popup_place">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button popup__close-button_place"></button>
+      <h3 class="popup__container-title">Новое место</h3>
+      <form name="addPlace" class="popup__form popup__form_place">
+        <input type="text" name="addMesto" placeholder="Название"
+          class="popup__input popup__input_type_place">
+        <input type="text" name="addLink-place" placeholder="Ссылка на картинку"
+          class="popup__input popup__input_type_line-place">
+        <button type="submit" class="popup__add-button">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <!--pop-up-image-->
+  <div class="popup popup_img">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button popup__close-button_img"></button>
+      <figure class="popup__figure">
+        <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg">
+        <figcaption class="popup__figurcap">подпись к картинке</figcaption>
+      </figure>
     </div>
   </div>
 

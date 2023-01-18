@@ -19,8 +19,7 @@
 }
 
 .profile__add-button:active {
-  width: 145px;
-  background-size: 20px 20px;
+  transform: scale(.95);
 }
 
 
@@ -30,10 +29,5 @@
     margin-top: 28px;
     width: 282px;
     background-size: 16px 16px;
-  }
-
-  .profile__add-button:active {
-    width: 277px;
-    background-size: 14px 14px;
   }
 }
