@@ -10,7 +10,6 @@ let jobInput = formElement.querySelector('.popup__input_type_job'); //поле �
 let close_popup_profile = document.querySelector('.popup__close-button_profile'); //крестик - кнопка закрытия модалки профиля
 
 //добавления фото места
-let placeTitle = document.querySelector('.place__title'); //название места в карточке
 
 let open_popupPlace = document.querySelector('.profile__add-button'); //кнопка открытия модалки место
 let popup_place = document.querySelector('.popup_place'); //страница модалки место
@@ -21,58 +20,116 @@ let close_popup_place = document.querySelector('.popup__close-button_place'); //
 //лайки
 let likePlacebtn = document.querySelector('.like-button'); //кнопка лайк место
 
+//popup картинки
+let popupImage = document.querySelector('.popup_img'); //попап с картинкой
+//let openPopupImg = document.querySelector('.place__img'); //кнопка открытия попап с картинкой
+let popup__close_button_img = document.querySelector('.popup__close-button_img'); //кнопка закрытия попап с картинкой
+
+
+//карточки место
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+
+//создал карточку
+const placeCards = document.querySelector('.place__card');
+const placeTemplate = document.querySelector('#place__item').content;
+const placeItems = placeTemplate.querySelector('.place__item').cloneNode(true);//клонировал карточку
+let placeImg = placeItems.querySelector('.place__img');
+let placeTitle = placeItems.querySelector('.place__title');
+
+initialCards.forEach(function(placeItem){
+    placeImg.src = initialCards.link;
+    placeTitle.textContent = initialCards.name;
+    placeCards.append(placeItems); //публикуем карточку
+  });
+
+
+
+
+//open popup
+function openPopup (popupElements){
+  popupElements.classList.add('popup_opened');
+}
+
+//close popup
+function closePopup (popupElements) {
+  popupElements.classList.remove('popup_opened');
+}
+
 
 /*Редактирование профиля*/
 
 //open popup-profile
-function openPopup () {
+function openPopupProfile () {
   nameInput.value = nameTitle.textContent;
   jobInput.value = job.textContent;
-  popup_profile.classList.add('popup_opened');
+  openPopup (popup_profile);
 }
-open_popup.addEventListener('click', openPopup);
+open_popup.addEventListener('click', openPopupProfile);
 
-//close popup-profile
-function closePopup () {
-  popup_profile.classList.remove('popup_opened');
-}
-close_popup_profile.addEventListener('click', closePopup);
+close_popup_profile.addEventListener('click', function () {closePopup (popup_profile)});
 
 //input form-profile
 function handleFormSubmit (evt) {
   evt.preventDefault();
   job.textContent = jobInput.value;
   nameTitle.textContent = nameInput.value;
-  closePopup ();
+  closePopup (popup_profile);
 }
 formElement.addEventListener('submit', handleFormSubmit);
 
 
+
 /*Добавление и удаление места*/
 
-//open popup-place
-function openPopupPlace () {
-  popup_place.classList.add('popup_opened');
-}
-open_popupPlace.addEventListener('click', openPopupPlace);
+open_popupPlace.addEventListener('click', function () {openPopup (popup_place)});
 
-//close popup-place
-function closePopupPlace () {
-  popup_place.classList.remove('popup_opened');
-}
-close_popup_place.addEventListener('click', closePopupPlace);
+close_popup_place.addEventListener('click', function () {closePopup (popup_place)});
 
 //input form-place
 function placeFormSubmit (evt) {
   evt.preventDefault();
   placeTitle.textContent = placeInput.value;
-  closePopupPlace ();
+  closePopup (popup_place);
 }
 formPlace.addEventListener('submit', placeFormSubmit);
 
 
-/*клик лайка пока не работате на все лайки*/
-function likePlace () {
-  likePlacebtn.classList.toggle('like-button_active');
-}
-likePlacebtn.addEventListener('click', likePlace);
+/*клик лайка пока не работает*/
+/*
+likePlacebtn.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  evt.target.classList.toggle('like-button_active');
+});
+*/
+
+//popoup картинка
+placeImg.addEventListener('click', () => {openPopup (popupImage)});
+
+popup__close_button_img.addEventListener('click', () => {closePopup (popupImage)});

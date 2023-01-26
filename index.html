@@ -33,11 +33,29 @@
     </section>
 
     <!--place-->
+
     <section class="place">
       <ul class="place__card">
+
+      <!--star template place-->
+
+        <template id="place__item">
+          <li class="place__item">
+            <button type="button" class="place__trash"></button>
+            <img type="button" src="#" class="place__img" alt="">
+            <div class="place__text">
+              <h2 class="place__title"></h2>
+              <button type="button" class="like-button"></button>
+            </div>
+          </li>
+        </template>
+
+    <!--end template place-->
+
+<!--
         <li class="place__item">
-          <button type="reset" class="place__trash"></button>
-          <img src="./images/kirill-pershin-1088404-unsplash.jpg" class="place__img"
+          <button type="button" class="place__trash"></button>
+          <img type="button" src="./images/kirill-pershin-1088404-unsplash.jpg" class="place__img"
             alt="фото старинной церкви в горах">
           <div class="place__text">
             <h2 class="place__title">Карачаево-Черкессия</h2>
@@ -88,7 +106,7 @@
             <h2 class="place__title">Карачаево-Черкессия</h2>
             <button type="button" class="like-button"></button>
           </div>
-        </li>
+        </li>-->
       </ul>
     </section>
     <!--end place-->
@@ -132,10 +150,11 @@
 
   <!--pop-up-image-->
   <div class="popup popup_img">
-    <div class="popup__container">
+    <div class="popup__container-image">
       <button type="button" class="popup__close-button popup__close-button_img"></button>
       <figure class="popup__figure">
-        <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg">
+        <img class="popup__image"
+          src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg">
         <figcaption class="popup__figurcap">подпись к картинке</figcaption>
       </figure>
     </div>
