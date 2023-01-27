@@ -9,24 +9,26 @@ let nameInput = formElement.querySelector('.popup__input_type_name'); //поле
 let jobInput = formElement.querySelector('.popup__input_type_job'); //поле ввода професии в модалке профиля
 let close_popup_profile = document.querySelector('.popup__close-button_profile'); //крестик - кнопка закрытия модалки профиля
 
-//добавления фото места
+//добавления карточки места
 
 let open_popupPlace = document.querySelector('.profile__add-button'); //кнопка открытия модалки место
 let popup_place = document.querySelector('.popup_place'); //страница модалки место
 let formPlace = document.querySelector('.popup__form_place'); //обёртка формы в место
 let placeInput = formPlace.querySelector('.popup__input_type_place'); //поле ввода названия места в модалке профиля
+let placeLink = formPlace.querySelector('.popup__input_type_link-place'); //поле ввода ссылки места в модалке профиля
 let close_popup_place = document.querySelector('.popup__close-button_place'); //крестик - кнопка закрытия модалки места
 
-//лайки
-let likePlacebtn = document.querySelector('.like-button'); //кнопка лайк место
+
 
 //popup картинки
-let popupImage = document.querySelector('.popup_img'); //попап с картинкой
-//let openPopupImg = document.querySelector('.place__img'); //кнопка открытия попап с картинкой
+const popupImage = document.querySelector('.popup_img'); //попап с картинкой
+let popoupImg = popupImage.querySelector('.popup__image'); //фото в попап
+let popupFugureCap = popupImage.querySelector('.popup__figurcap'); //подпись под картинкой в попап
+
 let popup__close_button_img = document.querySelector('.popup__close-button_img'); //кнопка закрытия попап с картинкой
 
 
-//карточки место
+/*Карточки место start*/
 
 const initialCards = [
   {
@@ -55,21 +57,76 @@ const initialCards = [
   }
 ];
 
-
-//создал карточку
+//нашёл карточку
 const placeCards = document.querySelector('.place__card');
 const placeTemplate = document.querySelector('#place__item').content;
-const placeItems = placeTemplate.querySelector('.place__item').cloneNode(true);//клонировал карточку
-let placeImg = placeItems.querySelector('.place__img');
-let placeTitle = placeItems.querySelector('.place__title');
 
-initialCards.forEach(function(placeItem){
-    placeImg.src = initialCards.link;
-    placeTitle.textContent = initialCards.name;
-    placeCards.append(placeItems); //публикуем карточку
-  });
+//перебрал и создал новый массив
+const placeInfo = initialCards.map(function (item) {
+  return {
+    namePlace: item.name,
+    linkPlace: item.link
+  };
+});
 
+//проверил новый массив и передал в функцию создания карточек
+function render() {
+  placeInfo.forEach(renderCard);
+}
 
+//рисую карточки из нового массива
+function renderCard({ namePlace, linkPlace }) {
+  const placeItems = placeTemplate.querySelector('.place__item').cloneNode(true);//клонировал карточку
+  let placeImg = placeItems.querySelector('.place__img');
+  let placeTitle = placeItems.querySelector('.place__title');
+  placeImg.src = linkPlace;
+  placeImg.alt = namePlace;
+  placeTitle.textContent = namePlace;
+  placeCards.prepend(placeItems);
+
+//popoup картинка
+  placeImg.addEventListener('click', () => {      //открываем popup с картинкой
+    popoupImg.src = placeImg.src;
+    popoupImg.alt = placeImg.alt;
+    popupFugureCap.textContent = placeTitle.textContent;
+    openPopup (popupImage)});
+
+  popup__close_button_img.addEventListener('click', () => {closePopup (popupImage)}); //закрывем popup с картинкой
+
+//лайки в карточках
+  let likePlacebtn = placeItems.querySelector('.like-button'); //кнопка лайк место
+
+  likePlacebtn.addEventListener('click', function (evt) {
+      evt.target.classList.toggle('like-button_active');
+    });
+
+  //input form-place
+  function placeFormSubmit (evt) {
+    evt.preventDefault();
+
+//    placeInfo.push({namePlace: placeInput.value, linkPlace: placeLink.value});
+
+    let itemNew = evt.target.closest('.place__item');
+
+    itemNew = renderCard({namePlace: placeInput.value, linkPlace: placeLink.value});
+
+    console.log(itemNew);
+
+    placeCards.prepend(itemNew);
+
+//    console.log(placeInfo);
+
+//    render();
+
+    closePopup (popup_place);
+  }
+  formPlace.addEventListener('submit', placeFormSubmit);
+
+}
+
+render(); //вызов функции отрисовки карточек
+
+/*Карточки место end*/
 
 
 //open popup
@@ -93,7 +150,7 @@ function openPopupProfile () {
 }
 open_popup.addEventListener('click', openPopupProfile);
 
-close_popup_profile.addEventListener('click', function () {closePopup (popup_profile)});
+close_popup_profile.addEventListener('click', () => {closePopup (popup_profile)});
 
 //input form-profile
 function handleFormSubmit (evt) {
@@ -108,28 +165,25 @@ formElement.addEventListener('submit', handleFormSubmit);
 
 /*Добавление и удаление места*/
 
-open_popupPlace.addEventListener('click', function () {openPopup (popup_place)});
+open_popupPlace.addEventListener('click', () => {openPopup (popup_place)});
 
-close_popup_place.addEventListener('click', function () {closePopup (popup_place)});
+close_popup_place.addEventListener('click', () => {closePopup (popup_place)});
 
+
+/*
 //input form-place
 function placeFormSubmit (evt) {
   evt.preventDefault();
-  placeTitle.textContent = placeInput.value;
+
+  placeInfo.push({namePlace: placeInput.value, linkPlace: placeLink.value});
+
+  console.log(placeInfo);
+
+  render();
+
   closePopup (popup_place);
 }
 formPlace.addEventListener('submit', placeFormSubmit);
-
-
-/*клик лайка пока не работает*/
-/*
-likePlacebtn.addEventListener('click', function (evt) {
-  evt.preventDefault();
-  evt.target.classList.toggle('like-button_active');
-});
 */
 
-//popoup картинка
-placeImg.addEventListener('click', () => {openPopup (popupImage)});
 
-popup__close_button_img.addEventListener('click', () => {closePopup (popupImage)});
