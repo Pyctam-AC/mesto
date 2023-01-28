@@ -37,21 +37,6 @@
     <section class="place" aria-label="фотографии различных мест России">
       <ul class="place__card">
 
-      <!--star template place-->
-
-        <template id="place__item">
-          <li class="place__item">
-            <button type="button" class="place__trash"></button>
-            <img type="button" src="#" class="place__img" alt="">
-            <div class="place__text">
-              <h2 class="place__title"></h2>
-              <button type="button" class="like-button"></button>
-            </div>
-          </li>
-        </template>
-
-    <!--end template place-->
-
       </ul>
     </section>
     <!--end place-->
@@ -103,6 +88,21 @@
       </figure>
     </div>
   </div>
+
+  <!--star template place-->
+
+  <template id="place__item">
+    <li class="place__item">
+      <button type="button" class="place__trash"></button>
+      <img type="button" src="#" class="place__img" alt="">
+      <div class="place__text">
+        <h2 class="place__title"></h2>
+        <button type="button" class="like-button"></button>
+      </div>
+    </li>
+  </template>
+
+<!--end template place-->
 
   <!--scripts-->
   <script src="./scripts/index.js"></script>
