@@ -56,6 +56,7 @@ const initialCards = [
 const placeCards = document.querySelector('.place__card'); //контейнер карточек
 const placeTemplate = document.querySelector('#place__item').content; //tempalate для карточек
 
+
 //функция рендера карточек
 function renderCard(items) {
   const placeItems = items.map((item) => {
@@ -90,7 +91,6 @@ function createCards (item) {
     popoupImg.alt = placeImg.alt;
     popupFugureCap.textContent = placeTitle.textContent;
     openPopup (popupImage)});
-
   return placeItem; //возвращаем карточку
 };
 
