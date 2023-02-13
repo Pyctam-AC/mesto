@@ -53,11 +53,13 @@
     <div class="popup__container">
       <button type="button" class="popup__close-button popup__close-button_profile"></button>
       <h3 class="popup__container-title">Редактировать профиль</h3>
-      <form name="addform" class="popup__form popup__form_profile">
-        <input type="text" name="addname" placeholder="Введите имя и фамилию"
+      <form name="addform" class="popup__form popup__form_profile" novalidate>
+        <input required type="text" minlength="2" maxlength="40" name="addname" placeholder="Введите имя и фамилию"
           class="popup__input popup__input_type_name">
-        <input type="text" name="addjob" placeholder="Введите вашу профессию"
+        <span class="error input-error-addname"></span>
+        <input required type="text" minlength="2" maxlength="200" name="addjob" placeholder="Введите вашу профессию"
           class="popup__input popup__input_type_job">
+        <span class="error input-error-addjob"></span>
         <button type="submit" class="popup__add-button">Сохранить</button>
       </form>
     </div>
@@ -68,11 +70,13 @@
     <div class="popup__container">
       <button type="button" class="popup__close-button popup__close-button_place"></button>
       <h3 class="popup__container-title">Новое место</h3>
-      <form name="addPlace" class="popup__form popup__form_place">
-        <input type="text" name="addMesto" placeholder="Название"
+      <form name="addPlace" class="popup__form popup__form_place" novalidate>
+        <input required type="text" minlength="1" maxlength="30" name="addMesto" placeholder="Название"
           class="popup__input popup__input_type_place">
-        <input type="text" name="addLink-place" placeholder="Ссылка на картинку"
+        <span class="error input-error-addMesto"></span>
+        <input required type="url" name="addLink-place" placeholder="Ссылка на картинку"
           class="popup__input popup__input_type_link-place">
+        <span class="error input-error-addLink-place"></span>
         <button type="submit" class="popup__add-button">Создать</button>
       </form>
     </div>
@@ -105,7 +109,9 @@
 <!--end template place-->
 
   <!--scripts-->
+  <script src="./scripts/constants/constant.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 
 </body>
 

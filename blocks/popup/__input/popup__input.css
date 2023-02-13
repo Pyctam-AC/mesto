@@ -2,8 +2,8 @@
   margin: 0 auto;
   padding: 0;
   width: 358px;
-  margin-top: 28px;
-  padding-bottom: 11px;
+  height: 28px;
+   margin-top: 5px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   font-family: 'Inter', Arial, Helvetica, sans-serif;
@@ -18,13 +18,29 @@
   outline: none;
 }
 
-.popup__input:first-child {
+.popup__input:first-of-type {
   margin-top: 0;
 }
+/*
+.popup__input:hover {
+  border-bottom-color: #000;
+}
+
+.popup__input:focus {
+  border-bottom-color: #007DFF;
+}
+
+.popup__input:valid {
+  border-bottom: 1px solid green;
+}
+ */
+.popup__input.popup__input_invalid {
+  border-bottom: 1px solid red;
+}
+
 
 @media screen and (max-width: 890px) {
   .popup__input {
     width: 238px;
-
   }
 }

@@ -1,56 +1,5 @@
-//редактирование профиля
-const nameTitle = document.querySelector('.profile__title'); //поле имени на главной странице
-const job = document.querySelector('.profile__subtitle'); //поле профессии на главной странице
-
-const popupProfile = document.querySelector('.popup_profile'); //страница модалки профиля
-const formElement = document.querySelector('.popup__form_profile'); //обёртка формы в профиля
-const buttonOpenPopupProfile = document.querySelector('.profile__edit-button'); //кнопка открытия модалки профиля
-const nameInput = formElement.querySelector('.popup__input_type_name'); //поле ввода имени в модалке профиля
-const jobInput = formElement.querySelector('.popup__input_type_job'); //поле ввода професии в модалке профиля
-const buttonClosePopupProfile = document.querySelector('.popup__close-button_profile'); //крестик - кнопка закрытия модалки профиля
-
-//добавления карточки места
-const buttonOpenPopupPlace = document.querySelector('.profile__add-button'); //кнопка открытия модалки место
-const popupPlace = document.querySelector('.popup_place'); //страница модалки место
-const formPlace = document.querySelector('.popup__form_place'); //обёртка формы в место
-const placeInput = formPlace.querySelector('.popup__input_type_place'); //поле ввода названия места в модалке профиля
-const placeLink = formPlace.querySelector('.popup__input_type_link-place'); //поле ввода ссылки места в модалке профиля
-const buttonClosePopupPlace = document.querySelector('.popup__close-button_place'); //крестик - кнопка закрытия модалки места
-
-//popup картинки
-const popupImage = document.querySelector('.popup_img'); //попап с картинкой
-const popoupImg = popupImage.querySelector('.popup__image'); //фото в попап
-const popupFugureCap = popupImage.querySelector('.popup__figurcap'); //подпись под картинкой в попап
-const buttonClosePopupImg = document.querySelector('.popup__close-button_img'); //крестик - кнопка закрытия попап с картинкой
 
 /*Карточки место start*/
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 //нашёл карточку
 const placeCards = document.querySelector('.place__card'); //контейнер карточек
@@ -94,9 +43,30 @@ function createCards (item) {
   return placeItem; //возвращаем карточку
 };
 
+//закрытие по escape
+function keyHandlerEsk (evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+  document.removeEventListener('keydown', keyHandlerEsk);
+};
+
+//закрытие мышкой
+function closePopupMouse (evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+ /*  if (evt.target === document.querySelector('.popup__close-button')) {
+    console.log(evt.currentTarget)
+    closePopup(document.querySelector('.popup_opened'));
+  }; */
+};
+
 //open popup
-function openPopup (popupElements){
+function openPopup (popupElements) {
   popupElements.classList.add('popup_opened');
+  popupElements.addEventListener('mousedown', closePopupMouse);
+  document.addEventListener('keydown', keyHandlerEsk);
 };
 
 //close popup
@@ -105,18 +75,22 @@ function closePopup (popupElements) {
 };
 
 //open popup-profile
-function openPopupProfile () {
+function openPopupProfile (popupElements) {
   nameInput.value = nameTitle.textContent;
   jobInput.value = job.textContent;
-  openPopup (popupProfile);
+  openPopup (popupElements);
+  //кнопка при открытии неактивна
+  disableButton (formElement.querySelector('.popup__add-button'), config.disableFormBtnClass);
 };
 
 //open popup-place
-function openPopupPlace () {
-  placeInput.value = '';
-  placeLink.value = '';
-  openPopup (popupPlace);
+function openPopupPlace (popupElements) {
+  formPlace.reset();
+  openPopup (popupElements);
+  //кнопка при открытии неактивна
+  disableButton (formPlace.querySelector('.popup__add-button'), config.disableFormBtnClass);
 };
+
 
 //input form-place
 function handleFormSubmitProfilePlace (evt) {
@@ -135,15 +109,16 @@ function handleFormSubmitProfile (evt) {
 };
 
 //глобальные кнопки-слушатели
-buttonClosePopupPlace.addEventListener('click', () => {closePopup (popupPlace)}); ////закрываем popup место
-buttonOpenPopupPlace.addEventListener('click', openPopupPlace); //открываем popup место
+buttonClosePopupPlace.addEventListener('click', () => closePopup (popupPlace)); ////закрываем popup место
+buttonOpenPopupPlace.addEventListener('click', () => openPopupPlace (popupPlace)); //открываем popup место
 formPlace.addEventListener('submit', handleFormSubmitProfilePlace); //сохраняем новую карточку место
 
-buttonOpenPopupProfile.addEventListener('click', openPopupProfile); //открываем Popup профиля
-buttonClosePopupProfile.addEventListener('click', () => {closePopup (popupProfile)}); //закрываем Popup профиля
+buttonOpenPopupProfile.addEventListener('click', () => openPopupProfile (popupProfile)); //открываем Popup профиля
+buttonClosePopupProfile.addEventListener('click', () => closePopup (popupProfile)); //закрываем Popup профиля
 formElement.addEventListener('submit', handleFormSubmitProfile); //сохраняем новые данные профиля
 
-buttonClosePopupImg.addEventListener('click', () => {closePopup (popupImage)}); //закрывем popup с картинкой
-
+buttonClosePopupImg.addEventListener('click', () => closePopup (popupImage)); //закрывем popup с картинкой
 
 renderCard(initialCards); //вызываем функция рендера карточек при загрузке страницы
+
+
