@@ -3,18 +3,18 @@ const nameTitle = document.querySelector('.profile__title'); //поле имен
 const job = document.querySelector('.profile__subtitle'); //поле профессии на главной странице
 
 const popupProfile = document.querySelector('.popup_profile'); //страница модалки профиля
-const formElement = document.querySelector('.popup__form_profile'); //обёртка формы в профиля
-const buttonOpenPopupProfile = document.querySelector('.profile__edit-button'); //кнопка открытия модалки профиля
-const nameInput = formElement.querySelector('.popup__input_type_name'); //поле ввода имени в модалке профиля
-const jobInput = formElement.querySelector('.popup__input_type_job'); //поле ввода професии в модалке профиля
+const profileForm = document.querySelector('.popup__form_profile'); //обёртка формы в профиля
+const profileOpenButton = document.querySelector('.profile__edit-button'); //кнопка открытия модалки профиля
+const nameInput = profileForm.querySelector('.popup__input_type_name'); //поле ввода имени в модалке профиля
+const jobInput = profileForm.querySelector('.popup__input_type_job'); //поле ввода професии в модалке профиля
 const buttonClosePopupProfile = document.querySelector('.popup__close-button_profile'); //крестик - кнопка закрытия модалки профиля
 
 //добавления карточки места
-const buttonOpenPopupPlace = document.querySelector('.profile__add-button'); //кнопка открытия модалки место
+const placeOpenButton = document.querySelector('.profile__add-button'); //кнопка открытия модалки место
 const popupPlace = document.querySelector('.popup_place'); //страница модалки место
-const formPlace = document.querySelector('.popup__form_place'); //обёртка формы в место
-const placeInput = formPlace.querySelector('.popup__input_type_place'); //поле ввода названия места в модалке профиля
-const placeLink = formPlace.querySelector('.popup__input_type_link-place'); //поле ввода ссылки места в модалке профиля
+const placeForm = document.querySelector('.popup__form_place'); //обёртка формы в место
+const placeInput = placeForm.querySelector('.popup__input_type_place'); //поле ввода названия места в модалке профиля
+const placeLink = placeForm.querySelector('.popup__input_type_link-place'); //поле ввода ссылки места в модалке профиля
 const buttonClosePopupPlace = document.querySelector('.popup__close-button_place'); //крестик - кнопка закрытия модалки места
 
 //popup картинки

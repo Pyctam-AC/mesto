@@ -5,7 +5,6 @@ const disableButton = (buttonElement, disableFormBtnClass) => {
 };
 
 const enableButton = (buttonElement, disableFormBtnClass) => {
-  console.log(disableFormBtnClass);
   buttonElement.classList.remove(disableFormBtnClass);
   buttonElement.disabled = false;
 };

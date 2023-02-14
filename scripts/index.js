@@ -44,51 +44,53 @@ function createCards (item) {
 };
 
 //закрытие по escape
-function keyHandlerEsk (evt) {
+function handleEscape (evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
   }
-  document.removeEventListener('keydown', keyHandlerEsk);
 };
+
+
 
 //закрытие мышкой
 function closePopupMouse (evt) {
   if (evt.target === evt.currentTarget) {
-    closePopup(document.querySelector('.popup_opened'));
+    closePopup(evt.currentTarget);
   }
- /*  if (evt.target === document.querySelector('.popup__close-button')) {
-    console.log(evt.currentTarget)
-    closePopup(document.querySelector('.popup_opened'));
-  }; */
+  if (evt.target === (evt.currentTarget.querySelector('.popup__close-button'))) {
+    closePopup(evt.currentTarget);
+  };
 };
 
 //open popup
-function openPopup (popupElements) {
-  popupElements.classList.add('popup_opened');
-  popupElements.addEventListener('mousedown', closePopupMouse);
-  document.addEventListener('keydown', keyHandlerEsk);
+function openPopup (popupElement) {
+  popupElement.classList.add('popup_opened');
+  popupElement.addEventListener('mousedown', closePopupMouse);
+  document.addEventListener('keydown', handleEscape);
 };
 
 //close popup
-function closePopup (popupElements) {
-  popupElements.classList.remove('popup_opened');
+function closePopup (popupElement) {
+  popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handleEscape);
+  popupElement.removeEventListener('mousedown', closePopupMouse);
 };
 
 //open popup-profile
-function openPopupProfile (popupElements) {
+function openPopupProfile (popupElement) {
   nameInput.value = nameTitle.textContent;
   jobInput.value = job.textContent;
-  openPopup (popupElements);
+  openPopup (popupElement);
   //кнопка при открытии неактивна
-  disableButton (formElement.querySelector('.popup__add-button'), config.disableFormBtnClass);
+  disableButton (profileForm.querySelector('.popup__add-button'), config.disableFormBtnClass);
 };
 
 //open popup-place
-function openPopupPlace (popupElements) {
-  formPlace.reset();
-  openPopup (popupElements);
+function openPopupPlace (popupElement) {
+  placeForm.reset();
+  openPopup (popupElement);
   //кнопка при открытии неактивна
-  disableButton (formPlace.querySelector('.popup__add-button'), config.disableFormBtnClass);
+  disableButton (placeForm.querySelector('.popup__add-button'), config.disableFormBtnClass);
 };
 
 
@@ -109,16 +111,27 @@ function handleFormSubmitProfile (evt) {
 };
 
 //глобальные кнопки-слушатели
-buttonClosePopupPlace.addEventListener('click', () => closePopup (popupPlace)); ////закрываем popup место
-buttonOpenPopupPlace.addEventListener('click', () => openPopupPlace (popupPlace)); //открываем popup место
-formPlace.addEventListener('submit', handleFormSubmitProfilePlace); //сохраняем новую карточку место
+//buttonClosePopupPlace.addEventListener('click', () => closePopup (popupPlace)); ////закрываем popup место
+placeOpenButton.addEventListener('click', () => openPopupPlace (popupPlace)); //открываем popup место
+placeForm.addEventListener('submit', handleFormSubmitProfilePlace); //сохраняем новую карточку место
 
-buttonOpenPopupProfile.addEventListener('click', () => openPopupProfile (popupProfile)); //открываем Popup профиля
-buttonClosePopupProfile.addEventListener('click', () => closePopup (popupProfile)); //закрываем Popup профиля
-formElement.addEventListener('submit', handleFormSubmitProfile); //сохраняем новые данные профиля
+profileOpenButton.addEventListener('click', () => openPopupProfile (popupProfile)); //открываем Popup профиля
+//buttonClosePopupProfile.addEventListener('click', () => closePopup (popupProfile)); //закрываем Popup профиля
+profileForm.addEventListener('submit', handleFormSubmitProfile); //сохраняем новые данные профиля
 
-buttonClosePopupImg.addEventListener('click', () => closePopup (popupImage)); //закрывем popup с картинкой
+//buttonClosePopupImg.addEventListener('click', () => closePopup (popupImage)); //закрывем popup с картинкой
 
 renderCard(initialCards); //вызываем функция рендера карточек при загрузке страницы
 
+/*
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__close');
+
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
+});
+ */
 
