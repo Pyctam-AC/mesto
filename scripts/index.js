@@ -1,10 +1,7 @@
-
 /*Карточки место start*/
-
 //нашёл карточку
 const placeCards = document.querySelector('.place__card'); //контейнер карточек
 const placeTemplate = document.querySelector('#place__item').content; //tempalate для карточек
-
 
 //функция рендера карточек
 function renderCard(items) {
@@ -50,14 +47,12 @@ function handleEscape (evt) {
   }
 };
 
-
-
-//закрытие мышкой
+//закрытие popup мышкой
 function closePopupMouse (evt) {
   if (evt.target === evt.currentTarget) {
     closePopup(evt.currentTarget);
   }
-  if (evt.target === (evt.currentTarget.querySelector('.popup__close-button'))) {
+  if (evt.target.classList.contains('popup__close-button')) {
     closePopup(evt.currentTarget);
   };
 };
@@ -111,19 +106,20 @@ function handleFormSubmitProfile (evt) {
 };
 
 //глобальные кнопки-слушатели
-//buttonClosePopupPlace.addEventListener('click', () => closePopup (popupPlace)); ////закрываем popup место
 placeOpenButton.addEventListener('click', () => openPopupPlace (popupPlace)); //открываем popup место
 placeForm.addEventListener('submit', handleFormSubmitProfilePlace); //сохраняем новую карточку место
+//buttonClosePopupPlace.addEventListener('click', () => closePopup (popupPlace)); ////закрываем popup место
 
 profileOpenButton.addEventListener('click', () => openPopupProfile (popupProfile)); //открываем Popup профиля
-//buttonClosePopupProfile.addEventListener('click', () => closePopup (popupProfile)); //закрываем Popup профиля
 profileForm.addEventListener('submit', handleFormSubmitProfile); //сохраняем новые данные профиля
+//buttonClosePopupProfile.addEventListener('click', () => closePopup (popupProfile)); //закрываем Popup профиля
 
 //buttonClosePopupImg.addEventListener('click', () => closePopup (popupImage)); //закрывем popup с картинкой
 
 renderCard(initialCards); //вызываем функция рендера карточек при загрузке страницы
 
 /*
+
 // находим все крестики проекта по универсальному селектору
 const closeButtons = document.querySelectorAll('.popup__close');
 
@@ -133,5 +129,11 @@ closeButtons.forEach((button) => {
   // устанавливаем обработчик закрытия на крестик
   button.addEventListener('click', () => closePopup(popup));
 });
+
+
+const profileForm = document.forms["profile-form"];
+const cardForm = document.forms["card-form"];
+
+
  */
 
