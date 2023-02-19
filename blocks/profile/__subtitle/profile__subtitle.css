@@ -10,7 +10,7 @@
    overflow: hidden;
  }
 
- @media screen and (max-width: 890px) {
+ @media screen and (max-width: 898px) {
    .profile__subtitle {
      margin-top: 10px;
      margin-bottom: 5px;

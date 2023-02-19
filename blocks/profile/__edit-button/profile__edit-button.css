@@ -23,7 +23,7 @@
   transform: scale(.9);
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 898px) {
   .profile__edit-button {
     margin: 0;
     position: absolute;

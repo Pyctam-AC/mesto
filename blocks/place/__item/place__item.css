@@ -19,7 +19,7 @@
   margin-right: 0;
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 898px) {
   .place__item {
     margin-right: 26px;
   }
