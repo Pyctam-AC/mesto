@@ -5,10 +5,22 @@ import {FormValidator} from './FormValidator.js';
 
 //рендер карточек с импоритированным классом
 initialCards.forEach((item) => {
-  const card = new Card (item, '#place__item');
-  const cardElement = card.createCards ();
-  document.querySelector('.place__card').prepend(cardElement);
+  getCard (item)
 });
+
+
+//input form-place - создание новой карточки из формы
+function handleFormSubmitPlace (evt) {
+  evt.preventDefault();
+  getCard ({name: placeInput.value, link: placeLink.value});
+  closePopup (popupPlace);
+};
+
+function getCard (card) {
+  const newCard = new Card (card, '#place__item');
+  const cardElement = newCard.createCard ();
+  containerCard.prepend(cardElement);
+}
 
 //закрытие по escape
 function handleEscape (evt) {
@@ -22,7 +34,7 @@ function closePopupMouse (evt) {
   if (evt.target === evt.currentTarget) {
     closePopup(evt.currentTarget);
   }
-  if (evt.target.classList.contains('popup__close-button')) {
+  else if (evt.target.classList.contains('popup__close-button')) {
     closePopup(evt.currentTarget);
   };
 };
@@ -47,7 +59,7 @@ function openPopupProfile (popupElement) {
   jobInput.value = job.textContent;
   openPopup (popupElement);
   //кнопка при открытии неактивна
-  FormProfileValidator.disableButton (profileForm.querySelector('.popup__add-button'), config.disableFormBtnClass);
+  formProfileValidator.disableButton (profileForm.querySelector('.popup__add-button'), validationConfig.disableFormBtnClass);
 };
 
 //open popup-place
@@ -55,20 +67,10 @@ function openPopupPlace (popupElement) {
   placeForm.reset();
   openPopup (popupElement);
   //кнопка при открытии неактивна
-  FormPlaceValidator.disableButton (placeForm.querySelector('.popup__add-button'), config.disableFormBtnClass);
+  formPlaceValidator.disableButton (placeForm.querySelector('.popup__add-button'), validationConfig.disableFormBtnClass);
 };
 
-
-//input form-place
-function handleFormSubmitProfilePlace (evt) {
-  evt.preventDefault();
-  const card = new Card ({name: placeInput.value, link: placeLink.value}, '#place__item');
-  const newItem = card.createCards ();
-  document.querySelector('.place__card').prepend(newItem);
-  closePopup (popupPlace);
-};
-
-//input form-profile
+//input form-profile - изменение данных профиля из формы
 function handleFormSubmitProfile (evt) {
   evt.preventDefault();
   job.textContent = jobInput.value;
@@ -77,17 +79,15 @@ function handleFormSubmitProfile (evt) {
 };
 
 //валидация каждой формы
-const FormProfileValidator = new FormValidator (config, profileForm);
-const FormProfile = FormProfileValidator.enableValidation ();
+const formProfileValidator = new FormValidator (validationConfig, profileForm);
+formProfileValidator.enableValidation ();
 
-const FormPlaceValidator = new FormValidator (config, placeForm);
-const FormPlace = FormPlaceValidator.enableValidation ();
-
-
+const formPlaceValidator = new FormValidator (validationConfig, placeForm);
+formPlaceValidator.enableValidation ();
 
 //глобальные кнопки-слушатели
 placeOpenButton.addEventListener('click', () => openPopupPlace (popupPlace)); //открываем popup место
-placeForm.addEventListener('submit', handleFormSubmitProfilePlace); //сохраняем новую карточку место
+placeForm.addEventListener('submit', handleFormSubmitPlace); //сохраняем новую карточку место
 
 
 profileOpenButton.addEventListener('click', () => openPopupProfile (popupProfile)); //открываем Popup профиля
@@ -118,7 +118,7 @@ const cardForm = document.forms["card-form"];
 
 /*Карточки место start*/
 //нашёл карточку
-//const placeCards = document.querySelector('.place__card'); //контейнер карточек
+//const placeCards = containerCard; //контейнер карточек
 //const placeTemplate = document.querySelector('#place__item').content; //tempalate для карточек
 
 
@@ -127,7 +127,7 @@ const cardForm = document.forms["card-form"];
 //функция рендера карточек
 /* function renderCard(items) {
   const placeItems = items.map((item) => {
-    return createCards (item);
+    return createCard (item);
   });
   placeCards.prepend(... placeItems); //размещаем карточки в начале
 }; */
@@ -135,7 +135,7 @@ const cardForm = document.forms["card-form"];
 
 /*
 //функция создания одной карточки
-function createCards (item) {
+function createCard (item) {
   const placeItem = placeTemplate.querySelector('.place__item').cloneNode(true); //клонировал карточку
   const placeImg = placeItem.querySelector('.place__img'); //картинка в карточке
   const placeTitle = placeItem.querySelector('.place__title'); //текст в карточке

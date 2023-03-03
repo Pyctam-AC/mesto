@@ -1,3 +1,6 @@
+//коннтейнер с карточками мест
+const containerCard = document.querySelector('.place__card');
+
 //редактирование профиля
 const nameTitle = document.querySelector('.profile__title'); //поле имени на главной странице
 const job = document.querySelector('.profile__subtitle'); //поле профессии на главной странице
@@ -51,10 +54,11 @@ const initialCards = [
   }
 ];
 
-const config = {
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   invalidInputClass:'popup__input_invalid',
+  inputErrorClassTemplate: '.input-error-',
   formSubmitBtnSelector: '.popup__add-button',
   disableFormBtnClass: 'popup__add-button_disabled'
 };
