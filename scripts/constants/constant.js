@@ -1,5 +1,5 @@
 //коннтейнер с карточками мест
-const containerCard = document.querySelector('.place__card');
+const cardsContainer = document.querySelector('.place__card');
 
 //редактирование профиля
 const nameTitle = document.querySelector('.profile__title'); //поле имени на главной странице

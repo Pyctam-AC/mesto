@@ -3,24 +3,26 @@ import {Card} from './Card.js';
 
 import {FormValidator} from './FormValidator.js';
 
-//рендер карточек с импоритированным классом
-initialCards.forEach((item) => {
-  getCard (item)
-});
+//инициализируеи карточки с импортированным классом
+const getCard = (card) => {
+  const newCard = new Card (card, '#place__item');
+  return newCard.createCard ();
+};
 
+//вставляем карточки в разметку
+const prependCards = (card) => cardsContainer.prepend(getCard(card));
+
+//перебериаем карточки из списка
+initialCards.forEach((item) => {
+  prependCards(item);
+});
 
 //input form-place - создание новой карточки из формы
 function handleFormSubmitPlace (evt) {
   evt.preventDefault();
-  getCard ({name: placeInput.value, link: placeLink.value});
+  prependCards ({name: placeInput.value, link: placeLink.value});
   closePopup (popupPlace);
 };
-
-function getCard (card) {
-  const newCard = new Card (card, '#place__item');
-  const cardElement = newCard.createCard ();
-  containerCard.prepend(cardElement);
-}
 
 //закрытие по escape
 function handleEscape (evt) {

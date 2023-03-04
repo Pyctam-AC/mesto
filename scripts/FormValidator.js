@@ -20,7 +20,7 @@ export class FormValidator {
   };
 
   _toggleButtonState = () => {
-    if (this._btnState) {
+    if (this._isButtonDisabled) {
       this.disableButton()
     } else {
       this._enableButton();
@@ -54,7 +54,7 @@ export class FormValidator {
     this._input = evt.target;
     this._errorElement = this._formElement.querySelector(`${this._inputErrorClassTemplate}${this._input.name}`);
     this._checkInputValidity ();
-    this._btnState = this._hasInvalidInput(inputsPopup);
+    this._isButtonDisabled = this._hasInvalidInput(inputsPopup);
     this._toggleButtonState();
   }
 
@@ -64,7 +64,7 @@ export class FormValidator {
     const inputsPopup = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     inputsPopup.forEach((input) => {
       input.addEventListener('input', (evt) =>
-      this._handleFormInput (evt, inputsPopup));
+        this._handleFormInput (evt, inputsPopup));
     });
   }
 };
