@@ -1,10 +1,17 @@
-import openPopup from './index.js';
+//import openPopup from '../src/index.js';
+import {popupImage} from '../index.js'
 
-export class Card {
-  constructor (data, templateSelector) {
+/* import {popupImage,
+        popupImg,
+        popupFugureCap,
+} from './constants/constant'; */
+
+export default class Card {
+  constructor ({data, handleCardClick}, templateSelector) {
     this._placeImage = data.link;
     this._placeTitle = data.name;
     this._templateSelector = templateSelector;
+    this.handleCardClick = handleCardClick;
   }
 
   //создаие карточки
@@ -41,7 +48,7 @@ export class Card {
     });
 
     this._imageCard.addEventListener('click', () => {
-      this._openPopupImage();
+      this.handleCardClick(this._placeImage, this._placeTitle);
     });
   }
 
@@ -56,11 +63,14 @@ export class Card {
     this._element = null;
   }
 
-  //открываем попап с картинкой
-  _openPopupImage() {
-    popoupImg.src = this._placeImage;
-    popoupImg.alt = this._placeTitle;
-    popupFugureCap.textContent = this._placeTitle;
-    openPopup (popupImage);
-  }
+  /* //открываем попап с картинкой
+  handleCardClick() {
+    popupImage.open(this._placeImage, this._placeTitle)
+  } */
 }
+
+
+/* popupImg.src = this._placeImage;
+    popupImg.alt = this._placeTitle;
+    popupFugureCap.textContent = this._placeTitle;
+    openPopup (popupImage); */

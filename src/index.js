@@ -1,21 +1,63 @@
+import './pages/index.css';
 
-import {Card} from './Card.js';
+import {initialCards,
+        nameTitle,
+        job,
+        popupProfile,
+        profileForm,
+        profileOpenButton,
+        nameInput,
+        jobInput,
+        placeOpenButton,
+        popupPlace,
+        placeForm,
+        placeInput,
+        placeLink,
+        validationConfig,
+} from './scripts/constants/constant.js';
 
-import {FormValidator} from './FormValidator.js';
+import Section from './scripts/Section.js';
+
+import Card from './scripts/Card.js';
+
+import Popup from './scripts/Popup.js';
+
+import PopupWithImage from './scripts/PopupWithImage.js';
+
+import PopupWithForm from './scripts/PopupWithForm.js';
+
+import FormValidator from './scripts/FormValidator.js';
+
+const cardList = new Section ({
+  items: initialCards,
+  renderer: (cardItem) => {
+    const newCard = new Card ({data: cardItem,
+                              handleCardClick: (placeImage, placeTitle) => popupImage.open (placeImage, placeTitle)},
+      '#place__item');
+    const cardElement = newCard.createCard ();
+    cardList.setItem(cardElement)
+    }
+  },
+  '.place__card');
+cardList.renderItems();
+
+export const popupImage = new PopupWithImage ('.popup_img');
+
+
 
 //инициализируеи карточки с импортированным классом
-const getCard = (card) => {
+/* const getCard = (card) => {
   const newCard = new Card (card, '#place__item');
   return newCard.createCard ();
-};
+}; */
 
 //вставляем карточки в разметку
-const prependCards = (card) => cardsContainer.prepend(getCard(card));
+/* const prependCards = (card) => cardsContainer.prepend(getCard(card)); */
 
 //перебериаем карточки из списка
-initialCards.forEach((item) => {
+/* initialCards.forEach((item) => {
   prependCards(item);
-});
+}); */
 
 //input form-place - создание новой карточки из формы
 function handleFormSubmitPlace (evt) {
