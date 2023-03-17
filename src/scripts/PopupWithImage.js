@@ -10,10 +10,11 @@ export default class PopupWithImage extends Popup {
     super(popupSelector);
   }
 
-  open (placeImage, placeTitle) {
-    super.open ();
-    popupImg.src = placeImage;
-    popupImg.alt = placeTitle;
-    popupFugureCap.textContent = placeTitle;
+  open(data) {
+    super.open();
+    popupImg.src = data.link;
+    popupImg.alt = data.name
+    popupFugureCap.textContent = data.name;
   }
 }
+

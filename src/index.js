@@ -32,7 +32,9 @@ const cardList = new Section ({
   items: initialCards,
   renderer: (cardItem) => {
     const newCard = new Card ({data: cardItem,
-                              handleCardClick: (placeImage, placeTitle) => popupImage.open (placeImage, placeTitle)},
+                              handleCardClick: () =>
+                                popupImage.open (cardItem)
+                              },
       '#place__item');
     const cardElement = newCard.createCard ();
     cardList.setItem(cardElement)

@@ -11,7 +11,7 @@ export default class Card {
     this._placeImage = data.link;
     this._placeTitle = data.name;
     this._templateSelector = templateSelector;
-    this.handleCardClick = handleCardClick;
+    this._handleCardClick = handleCardClick;
   }
 
   //создаие карточки
@@ -33,7 +33,7 @@ export default class Card {
 
     this._likeElementCard = this._element.querySelector('.like-button');
 
-    this._setEventListeners(); //слушатели события в карточке
+    this._setEventListeners();
 
     return this._element;
   }
@@ -48,7 +48,7 @@ export default class Card {
     });
 
     this._imageCard.addEventListener('click', () => {
-      this.handleCardClick(this._placeImage, this._placeTitle);
+      this._handleCardClick ();
     });
   }
 

@@ -12,7 +12,7 @@ export default class PopupWithForm extends Popup {
   _setEventListeners () {}
 
   open () {
-
+    super
   }
 
   close () {
