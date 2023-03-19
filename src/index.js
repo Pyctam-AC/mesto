@@ -1,19 +1,11 @@
 import './pages/index.css';
 
 import {initialCards,
-        nameTitle,
-        job,
-        popupProfile,
-        profileForm,
         profileOpenButton,
-        nameInput,
-        jobInput,
         placeOpenButton,
-        popupPlace,
-        placeForm,
-        placeInput,
-        placeLink,
         validationConfig,
+        placeForm,
+        profileForm
 } from './scripts/constants/constant.js';
 
 import Section from './scripts/Section.js';
@@ -28,23 +20,74 @@ import PopupWithForm from './scripts/PopupWithForm.js';
 
 import FormValidator from './scripts/FormValidator.js';
 
+import UserInfo from './scripts/UserInfo.js';
+
+const profileInfo = new UserInfo ('.profile__title', '.profile__subtitle');
+
+//==========
+const handleCardClick = (placeImage, placeTitle) => {
+  popupImage.open (placeImage, placeTitle)
+}
+
+const renederCard = (item) => {
+  const newCard = new Card ({data: item,
+    handleCardClick},
+    '#place__item');
+  return newCard.createCard ();
+}
+
 const cardList = new Section ({
   items: initialCards,
   renderer: (cardItem) => {
-    const newCard = new Card ({data: cardItem,
-                              handleCardClick: () =>
-                                popupImage.open (cardItem)
-                              },
-      '#place__item');
-    const cardElement = newCard.createCard ();
-    cardList.setItem(cardElement)
+    cardList.setItem(renederCard (cardItem));
     }
   },
   '.place__card');
 cardList.renderItems();
+//===========
 
+//popup-картинка
 export const popupImage = new PopupWithImage ('.popup_img');
 
+//=========
+const handleFormSubmit = (formData) => {
+  cardList.setItem(renederCard (formData));
+  document.querySelector('.popup__form_place').reset();
+
+  formPlaceValidator.disableButton(document.querySelector('.popup__add-button'),
+    validationConfig.disableFormBtnClass);
+}
+
+//экземпляр popup-место
+export const popupPlace = new PopupWithForm ({
+  selector: '.popup_place', handleFormSubmit
+})
+
+//открываем popup-место
+placeOpenButton.addEventListener('click', popupPlace.open);
+
+//валидация формы-место
+const formPlaceValidator = new FormValidator (validationConfig,
+  document.querySelector('.popup__form_place'));
+formPlaceValidator.enableValidation();
+
+//==========
+
+
+//profileOpenButton.addEventListener('click', () => openPopupProfile (popupProfile)); //открываем Popup профиля
+//profileForm.addEventListener('submit', handleFormSubmitProfile); //сохраняем новые данные профиля
+
+//open popup-profile
+/* function openPopupProfile (popupElement) {
+  nameInput.value = nameTitle.textContent;
+  jobInput.value = job.textContent;
+  openPopup (popupElement);
+  //кнопка при открытии неактивна
+  formProfileValidator.disableButton (profileForm.querySelector('.popup__add-button'), validationConfig.disableFormBtnClass);
+}; */
+
+//placeOpenButton.addEventListener('click', openPopupPlace); //открываем popup место
+//open popup-place
 
 
 //инициализируеи карточки с импортированным классом
@@ -62,82 +105,65 @@ export const popupImage = new PopupWithImage ('.popup_img');
 }); */
 
 //input form-place - создание новой карточки из формы
-function handleFormSubmitPlace (evt) {
+/* function handleFormSubmitPlace (evt) {
   evt.preventDefault();
   prependCards ({name: placeInput.value, link: placeLink.value});
   closePopup (popupPlace);
 };
-
+ */
 //закрытие по escape
-function handleEscape (evt) {
+/* function handleEscape (evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
   }
-};
+}; */
 
 //закрытие popup мышкой
-function closePopupMouse (evt) {
+/* function closePopupMouse (evt) {
   if (evt.target === evt.currentTarget) {
     closePopup(evt.currentTarget);
   }
   else if (evt.target.classList.contains('popup__close-button')) {
     closePopup(evt.currentTarget);
   };
-};
+}; */
 
 //open popup
-export default function openPopup (popupElement) {
+/* export default function openPopup (popupElement) {
   popupElement.classList.add('popup_opened');
   popupElement.addEventListener('mousedown', closePopupMouse);
   document.addEventListener('keydown', handleEscape);
 };
-
+ */
 //close popup
-function closePopup (popupElement) {
+/* function closePopup (popupElement) {
   popupElement.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleEscape);
   popupElement.removeEventListener('mousedown', closePopupMouse);
-};
+}; */
 
-//open popup-profile
-function openPopupProfile (popupElement) {
-  nameInput.value = nameTitle.textContent;
-  jobInput.value = job.textContent;
-  openPopup (popupElement);
-  //кнопка при открытии неактивна
-  formProfileValidator.disableButton (profileForm.querySelector('.popup__add-button'), validationConfig.disableFormBtnClass);
-};
 
 //open popup-place
-function openPopupPlace (popupElement) {
+/* function openPopupPlace (popupElement) {
   placeForm.reset();
   openPopup (popupElement);
   //кнопка при открытии неактивна
   formPlaceValidator.disableButton (placeForm.querySelector('.popup__add-button'), validationConfig.disableFormBtnClass);
 };
-
+ */
 //input form-profile - изменение данных профиля из формы
-function handleFormSubmitProfile (evt) {
+/* function handleFormSubmitProfile (evt) {
   evt.preventDefault();
   job.textContent = jobInput.value;
   nameTitle.textContent = nameInput.value;
   closePopup (popupProfile);
 };
-
+ */
 //валидация каждой формы
-const formProfileValidator = new FormValidator (validationConfig, profileForm);
-formProfileValidator.enableValidation ();
-
-const formPlaceValidator = new FormValidator (validationConfig, placeForm);
-formPlaceValidator.enableValidation ();
-
-//глобальные кнопки-слушатели
-placeOpenButton.addEventListener('click', () => openPopupPlace (popupPlace)); //открываем popup место
-placeForm.addEventListener('submit', handleFormSubmitPlace); //сохраняем новую карточку место
+/* const formProfileValidator = new FormValidator (validationConfig, profileForm);
+formProfileValidator.enableValidation (); */
 
 
-profileOpenButton.addEventListener('click', () => openPopupProfile (popupProfile)); //открываем Popup профиля
-profileForm.addEventListener('submit', handleFormSubmitProfile); //сохраняем новые данные профиля
 
 
 

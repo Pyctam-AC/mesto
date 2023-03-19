@@ -1,20 +1,16 @@
-import {
-  popupImg,
-  popupFugureCap,
-} from './constants/constant.js';
-
 import Popup from "./Popup.js";
 
 export default class PopupWithImage extends Popup {
   constructor (popupSelector) {
     super(popupSelector);
+    this._popupImg = this._popup.querySelector('.popup__image'); //фото в попап
+    this._popupFugureCap = this._popup.querySelector('.popup__figurcap'); //подпись под картинкой в попап
   }
 
-  open(data) {
+  open(placeImage, placeTitle) {
     super.open();
-    popupImg.src = data.link;
-    popupImg.alt = data.name
-    popupFugureCap.textContent = data.name;
+    this._popupImg.src = placeImage;
+    this._popupImg.alt = placeTitle
+    this._popupFugureCap.textContent = placeTitle;
   }
 }
-

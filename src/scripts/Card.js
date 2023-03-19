@@ -48,7 +48,7 @@ export default class Card {
     });
 
     this._imageCard.addEventListener('click', () => {
-      this._handleCardClick ();
+      this._handleCardClick (this._placeImage, this._placeTitle);
     });
   }
 
@@ -62,15 +62,5 @@ export default class Card {
     this._element.remove();
     this._element = null;
   }
-
-  /* //открываем попап с картинкой
-  handleCardClick() {
-    popupImage.open(this._placeImage, this._placeTitle)
-  } */
 }
 
-
-/* popupImg.src = this._placeImage;
-    popupImg.alt = this._placeTitle;
-    popupFugureCap.textContent = this._placeTitle;
-    openPopup (popupImage); */
