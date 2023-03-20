@@ -8,14 +8,14 @@ export const cardsContainer = document.querySelector('.place__card');
 //export const popupProfile = document.querySelector('.popup_profile'); //страница модалки профиля
 export const profileForm = document.querySelector('.popup__form_profile'); //обёртка формы в профиля
 export const profileOpenButton = document.querySelector('.profile__edit-button'); //кнопка открытия модалки профиля
-//export const nameInput = profileForm.querySelector('.popup__input_type_name'); //поле ввода имени в модалке профиля
-//export const jobInput = profileForm.querySelector('.popup__input_type_job'); //поле ввода професии в модалке профиля
+export const nameInput = profileForm.querySelector('.popup__input_type_name'); //поле ввода имени в модалке профиля
+export const jobInput = profileForm.querySelector('.popup__input_type_job'); //поле ввода професии в модалке профиля
 //export const buttonClosePopupProfile = document.querySelector('.popup__close-button_profile'); //крестик - кнопка закрытия модалки профиля
 
 //добавления карточки места
 export const placeOpenButton = document.querySelector('.profile__add-button'); //кнопка открытия модалки место
 //export const popupPlace = document.querySelector('.popup_place'); //страница модалки место
-//export const placeForm = document.querySelector('.popup__form_place'); //обёртка формы в место
+export const placeForm = document.querySelector('.popup__form_place'); //обёртка формы в место
 //export const placeInput = placeForm.querySelector('.popup__input_type_place'); //поле ввода названия места в модалке профиля
 //export const placeLink = placeForm.querySelector('.popup__input_type_link-place'); //поле ввода ссылки места в модалке профиля
 //export const buttonClosePopupPlace = document.querySelector('.popup__close-button_place'); //крестик - кнопка закрытия модалки места
