@@ -1,11 +1,3 @@
-//import openPopup from '../src/index.js';
-import {popupImage} from '../index.js'
-
-/* import {popupImage,
-        popupImg,
-        popupFugureCap,
-} from './constants/constant'; */
-
 export default class Card {
   constructor ({data, handleCardClick}, templateSelector) {
     this._placeImage = data.link;

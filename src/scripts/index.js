@@ -1,4 +1,4 @@
-import './pages/index.css';
+import '../pages/index.css';
 
 import {initialCards,
         profileOpenButton,
@@ -8,19 +8,19 @@ import {initialCards,
         profileForm,
         nameInput,
         jobInput
-} from './scripts/constants/constant.js';
+} from './constants/constant.js';
 
-import Section from './scripts/Section.js';
+import Section from './Section.js';
 
-import Card from './scripts/Card.js';
+import Card from './Card.js';
 
-import PopupWithImage from './scripts/PopupWithImage.js';
+import PopupWithImage from './PopupWithImage.js';
 
-import PopupWithForm from './scripts/PopupWithForm.js';
+import PopupWithForm from './PopupWithForm.js';
 
-import FormValidator from './scripts/FormValidator.js';
+import FormValidator from './FormValidator.js';
 
-import UserInfo from './scripts/UserInfo.js';
+import UserInfo from './UserInfo.js';
 
 //==========
 const handleCardClick = (placeImage, placeTitle) => {
