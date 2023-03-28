@@ -62,3 +62,5 @@ export const validationConfig = {
   formSubmitBtnSelector: '.popup__add-button',
   disableFormBtnClass: 'popup__add-button_disabled'
 };
+
+const brom = [1, 2]
