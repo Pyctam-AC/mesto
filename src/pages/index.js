@@ -52,7 +52,6 @@ popupImage.setEventListeners ();
 export const popupPlace = new PopupWithForm ('.popup_place',
   (formData) => {
   cardList.setItem(renederCard ({name: formData.addNamePlace, link: formData.addLinkPlace}));
-  placeForm.reset();
 })
 popupPlace.setEventListeners ();
 
