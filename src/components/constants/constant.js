@@ -2,6 +2,8 @@
 export const cardsContainer = document.querySelector('.place__card');
 
 //редактирование профиля
+export const profileAvatar = document.querySelector('.profile__photo'); //фото аватара
+export const avatarChangeForm = document.querySelector('.popup__form_avatar'); //модалка замены аватара
 //export const nameTitle = document.querySelector('.profile__title'); //поле имени на главной странице
 //export const job = document.querySelector('.profile__subtitle'); //поле профессии на главной странице
 
@@ -26,31 +28,39 @@ export const placeForm = document.querySelector('.popup__form_place'); //обё�
 //export const popupFugureCap = popupImage.querySelector('.popup__figurcap'); //подпись под картинкой в попап
 //export const buttonClosePopupImg = document.querySelector('.popup__close-button_img'); //крестик - кнопка закрытия попап с картинкой
 
+//export const buttonAddPopup = document.querySelector('.popup__add-button'); //кнопка сохранения во всех попап
+
 
 export const initialCards = [
   {
     name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+    likes: '6'
   },
   {
     name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+    likes: '6'
   },
   {
     name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+    likes: '6'
   },
   {
     name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+    likes: '6'
   },
   {
     name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+    likes: '6'
   },
   {
     name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+    likes: '6'
   }
 ];
 

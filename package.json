@@ -1,16 +1,13 @@
 {
   "name": "mesto",
   "version": "1.0.0",
-  "repository": {
-    "url": "git+https://github.com/Pyctam-AC/mesto.git"
-  },
   "description": "**Цель проекта** - рефакторинг кода JavaScript - разделение кода на классы",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -r https://github.com/Pyctam-AC/mesto.git"
   },
   "author": "",
   "license": "ISC",
