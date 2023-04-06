@@ -36,18 +36,19 @@ const api = new Api({
   }
 });
 
-Promise.all([api.getInfoProfile(), api.getInitialCards()]);
+
+Promise.all([api.getInfoProfile(), api.getInitialCards()])
+  .then(([userInfo, cards]) => {
+    //console.log(userInfo, cards);
+    profileInfo.setUserInfo(userInfo)
+    userID = userInfo._id
+    cardList.renderItems(cards)
+  })
+  .catch((err) => { console.log(err) });
+
 //===========================================================================================
 const profileInfo = new UserInfo ('.profile__photo', '.profile__title', '.profile__subtitle');
 
-api.getInfoProfile()
-.then((data) => {
-  profileInfo.setUserInfo(data)
-  userID = data._id
-})
-.catch((err) => {
-  console.log(err);
-});
 
 //===============================
 const handleCardClick = (placeImage, placeTitle) => {
@@ -63,9 +64,6 @@ const popupTrash = new PopupWithFormSubmit ('.popup_trash', (card) => {
   .catch((err) => {
     console.log(err);
   })
-  .catch((err) => {
-    console.log(err);
-  })
   .finally(() => {
     popupTrash.close();
   });
@@ -77,25 +75,6 @@ const handleTrashClick = (card) => {
   popupTrash.setDataCard (card);
   popupTrash.open ();
 }
-
-/*
- setDataCard (cardElement, id) {
-    this._card = cardElement;
-    this._idCard = id
-  }
-
-  _setElementData () {
-    this._api.deleteCard(this._idCard)
-      .then(() => {
-        this._card.remove()
-        this._card = null
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-*/
-
-
 
 const handleLikeClick = (card) => {
   if (card.likes.find(likeElemetn => likeElemetn._id === card.userID)) {
@@ -131,15 +110,6 @@ const cardList = new Section ({
     }
   },
   '.place__card')
-
-
-api.getInitialCards()
-.then((data) => {
-  cardList.renderItems(data);
-})
-.catch((err) => {
-  console.log(err);
-});
 
 //============================
 
