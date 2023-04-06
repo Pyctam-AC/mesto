@@ -2,7 +2,7 @@
 export const cardsContainer = document.querySelector('.place__card');
 
 //редактирование профиля
-export const profileAvatar = document.querySelector('.profile__photo'); //фото аватара
+export const profileAvatar = document.querySelector('.profile__avatar'); //фото аватара
 export const avatarChangeForm = document.querySelector('.popup__form_avatar'); //модалка замены аватара
 //export const nameTitle = document.querySelector('.profile__title'); //поле имени на главной странице
 //export const job = document.querySelector('.profile__subtitle'); //поле профессии на главной странице
