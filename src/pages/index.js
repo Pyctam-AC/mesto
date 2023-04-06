@@ -7,7 +7,7 @@ import {profileOpenButton,
         profileForm,
         profileAvatar,
         avatarChangeForm
-} from '../components/constants/constant.js';
+} from '../utils/constant.js';
 
 import Section from '../components/Section.js';
 
@@ -36,6 +36,7 @@ const api = new Api({
   }
 });
 
+Promise.all([api.getInfoProfile(), api.getInitialCards()]);
 //===========================================================================================
 const profileInfo = new UserInfo ('.profile__photo', '.profile__title', '.profile__subtitle');
 
@@ -53,30 +54,68 @@ const handleCardClick = (placeImage, placeTitle) => {
   popupImage.open (placeImage, placeTitle)
 }
 
-const handleTrashClick = (cardElement, id) => {
-  popupTrash.setDataCard (cardElement, id);
+//popupTrash
+const popupTrash = new PopupWithFormSubmit ('.popup_trash', (card) => {
+  api.deleteCard(card.id)
+  .then(() => {
+    card.deleteCard(card.element)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+    popupTrash.close();
+  });
+});
+popupTrash.setEventListeners ();
+
+
+const handleTrashClick = (card) => {
+  popupTrash.setDataCard (card);
   popupTrash.open ();
 }
 
-const handleLikeClick = (Card) => {
-  if (Card.likes.find(likeElemetn => likeElemetn._id === Card.userID)) {
-    api.setLikeCard(Card.id, 'DELETE')
+/*
+ setDataCard (cardElement, id) {
+    this._card = cardElement;
+    this._idCard = id
+  }
+
+  _setElementData () {
+    this._api.deleteCard(this._idCard)
+      .then(() => {
+        this._card.remove()
+        this._card = null
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+*/
+
+
+
+const handleLikeClick = (card) => {
+  if (card.likes.find(likeElemetn => likeElemetn._id === card.userID)) {
+    api.setLikeCard(card.id, 'DELETE')
       .then((data) => {
-        Card.showinglikes(data.likes, false)
+        card.showinglikes(data.likes, false)
       })
       .catch((err) => { console.log(err) })
   }
   else {
-    api.setLikeCard(Card.id, 'PUT')
+    api.setLikeCard(card.id, 'PUT')
       .then((data) => {
-        Card.showinglikes(data.likes, true)
+        card.showinglikes(data.likes, true)
       })
       .catch((err) => { console.log(err) })
   }
 };
 
 
-const renederCard = (item) => {
+const creatingCard = (item) => {
   const newCard = new Card ({data: item,
     handleCardClick,
     handleTrashClick,
@@ -88,7 +127,7 @@ const renederCard = (item) => {
 
 const cardList = new Section ({
   renderer: (cardItem) => {
-      cardList.setItem(renederCard (cardItem));
+      cardList.setItem(creatingCard (cardItem));
     }
   },
   '.place__card')
@@ -110,20 +149,13 @@ popupImage.setEventListeners ();
 
 //=====================
 
-//popupTrash
-const popupTrash = new PopupWithFormSubmit ('.popup_trash', api);
-popupTrash.setEventListeners ();
-
-
-//=========================
-
 //экземпляр popup-место
 export const popupPlace = new PopupWithForm ('.popup_place',
   (formData) => {
     popupPlace.renderLoading(true);
     api.setNewCard(formData.addNamePlace, formData.addLinkPlace)
     .then((data) => {
-      cardList.setItem(renederCard (data));
+      cardList.setItem(creatingCard (data));
     })
     .then(() => {
       popupPlace.renderLoading(false);
@@ -159,6 +191,7 @@ const popupProfileData = new PopupWithForm ('.popup_profile', (data) => {
   })
   .then(() => {
     popupProfileData.renderLoading(false);
+    formProfileValidator.resetValidation();
   })
   .catch((err) => {
     console.log(err);

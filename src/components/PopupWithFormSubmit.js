@@ -1,18 +1,17 @@
 import Popup from './Popup.js';
 
 export default class PopupWithFormSubmit extends Popup {
-  constructor (popupSelector, api) {
+  constructor (popupSelector, setElementData) {
     super(popupSelector);
     this._form = this._popup.querySelector('.popup__form');
-    this._api = api
+    this._setElementData = setElementData
   }
 
-  setDataCard (cardElement, id) {
-    this._elementCard = cardElement;
-    this._idCard = id
+   setDataCard (elemenCard) {
+    return this._elementCard = elemenCard;
   }
 
-  _setElementData () {
+/*  _setElementData () {
     this._api.deleteCard(this._idCard)
       .then(() => {
         this._elementCard.remove()
@@ -21,14 +20,14 @@ export default class PopupWithFormSubmit extends Popup {
       .catch((err) => {
         console.log(err);
       });
-  }
+  } */
 
   setEventListeners () {
     super.setEventListeners();
 
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._setElementData ();
+      this._setElementData (this._elementCard);
     });
   }
 }

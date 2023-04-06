@@ -22,19 +22,19 @@ export default class Card {
 
   showinglikes (data, isLiked) {
     this.likes = data;
-    this._element.querySelector('.place__like').textContent = this.likes.length;
+    this.element.querySelector('.place__like').textContent = this.likes.length;
     this._handleLike(isLiked)
   }
 
   createCard () {
-    this._element = this._getTemplate();
-    this._imageCard = this._element.querySelector('.place__img');
+    this.element = this._getTemplate();
+    this._imageCard = this.element.querySelector('.place__img');
     this._imageCard.src = this._placeImage;
     this._imageCard.alt = this._placeTitle;
-    this._element.querySelector('.place__title').textContent = this._placeTitle;
-    this._likeElementCard = this._element.querySelector('.like-button');
+    this.element.querySelector('.place__title').textContent = this._placeTitle;
+    this._likeElementCard = this.element.querySelector('.like-button');
     this.showinglikes (this.likes)
-    this._trashButton = this._element.querySelector('.place__trash')
+    this._trashButton = this.element.querySelector('.place__trash')
     if (this._ownerCardID != this.userID) {
       this._trashButton.classList.add('place__trash_none');
     }
@@ -48,7 +48,7 @@ export default class Card {
 
     this._setEventListeners();
 
-    return this._element;
+    return this.element;
   }
 
   _setEventListeners () {
@@ -58,7 +58,7 @@ export default class Card {
     });
 
     this._trashButton.addEventListener('click', () => {
-      this._handleTrashClick(this._element, this.id);
+      this._handleTrashClick(this);
     });
 
     this._imageCard.addEventListener('click', () => {
@@ -73,15 +73,13 @@ export default class Card {
       this._likeElementCard.classList.remove('like-button_active');
     }
   }
-}
-
 
   //удаление карточки
-/*   deleteCard(elementCard) {
+  deleteCard (elementCard) {
     elementCard.remove();
     elementCard = null;
-  } */
-
+  }
+}
 
   /*  this._placeImage = data.link;
     this._placeTitle = data.name;
@@ -90,12 +88,12 @@ export default class Card {
     this._ownerCardID = data.owner._id;
  */
 
-    /*     this._imageCard = this._element.querySelector('.place__img');
+    /*     this._imageCard = this.element.querySelector('.place__img');
     this._imageCard.src = this._placeImage;
     this._imageCard.alt = this._placeTitle;
   //  this._likes.length = this._likeNumber;
-    this._element.querySelector('.place__title').textContent = this._placeTitle;
-    this._element.querySelector('.place__like').textContent = this._likes.length; */
+    this.element.querySelector('.place__title').textContent = this._placeTitle;
+    this.element.querySelector('.place__like').textContent = this._likes.length; */
 
     /*   likeNumber (likeNumber) {
     return likeNumber.length
@@ -118,6 +116,6 @@ export default class Card {
 
   /*     this._imageCard.src = this._data.link;
     this._imageCard.alt = this._data.name;
-    this._element.querySelector('.place__title').textContent = this._data.name;
-    this._element.querySelector('.place__like').textContent = this._data.likes.length; */
+    this.element.querySelector('.place__title').textContent = this._data.name;
+    this.element.querySelector('.place__like').textContent = this._data.likes.length; */
 
