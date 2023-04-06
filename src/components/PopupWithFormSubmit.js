@@ -5,22 +5,20 @@ export default class PopupWithFormSubmit extends Popup {
     super(popupSelector);
     this._form = this._popup.querySelector('.popup__form');
     this._setElementData = setElementData
+    this._buttonAddPopup = this._form.querySelector('.popup__add-button');
   }
 
    setDataCard (elemenCard) {
     return this._elementCard = elemenCard;
   }
 
-/*  _setElementData () {
-    this._api.deleteCard(this._idCard)
-      .then(() => {
-        this._elementCard.remove()
-        this._elementCard = null
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  } */
+  renderDeleting = (isDelete) => {
+    if (isDelete) {
+      this._buttonAddPopup.textContent = 'Удаление...'}
+    else {
+      this._buttonAddPopup.textContent = 'Да'
+    }
+  }
 
   setEventListeners () {
     super.setEventListeners();

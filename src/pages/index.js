@@ -57,9 +57,13 @@ const handleCardClick = (placeImage, placeTitle) => {
 
 //popupTrash
 const popupTrash = new PopupWithFormSubmit ('.popup_trash', (card) => {
+  popupTrash.renderDeleting (true)
   api.deleteCard(card.id)
   .then(() => {
     card.deleteCard(card.element)
+  })
+  .then(() => {
+    popupTrash.renderDeleting (false)
   })
   .catch((err) => {
     console.log(err);
