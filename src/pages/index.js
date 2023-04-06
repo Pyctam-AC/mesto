@@ -60,6 +60,7 @@ const popupTrash = new PopupWithFormSubmit ('.popup_trash', (card) => {
   popupTrash.renderDeleting (true)
   api.deleteCard(card.id)
   .then(() => {
+
     card.deleteCard(card.element)
   })
   .then(() => {
@@ -70,6 +71,7 @@ const popupTrash = new PopupWithFormSubmit ('.popup_trash', (card) => {
   })
   .finally(() => {
     popupTrash.close();
+
   });
 });
 popupTrash.setEventListeners ();
@@ -132,13 +134,14 @@ export const popupPlace = new PopupWithForm ('.popup_place',
       cardList.setItem(creatingCard (data));
     })
     .then(() => {
-      popupPlace.renderLoading(false);
+      formPlaceValidator.resetValidation();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       popupPlace.close();
+      popupPlace.renderLoading(false);
     });
 })
 popupPlace.setEventListeners ();
@@ -164,7 +167,6 @@ const popupProfileData = new PopupWithForm ('.popup_profile', (data) => {
     profileInfo.setUserInfo(data);
   })
   .then(() => {
-    popupProfileData.renderLoading(false);
     formProfileValidator.resetValidation();
   })
   .catch((err) => {
@@ -172,6 +174,7 @@ const popupProfileData = new PopupWithForm ('.popup_profile', (data) => {
   })
   .finally(() => {
     popupProfileData.close();
+    popupProfileData.renderLoading(false);
   });
 })
 popupProfileData.setEventListeners ();

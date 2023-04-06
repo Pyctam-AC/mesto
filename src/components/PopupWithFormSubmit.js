@@ -8,7 +8,7 @@ export default class PopupWithFormSubmit extends Popup {
     this._buttonAddPopup = this._form.querySelector('.popup__add-button');
   }
 
-   setDataCard (elemenCard) {
+  setDataCard (elemenCard) {
     return this._elementCard = elemenCard;
   }
 
