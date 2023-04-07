@@ -28,6 +28,15 @@ export default class PopupWithFormSubmit extends Popup {
       this._setElementData (this._elementCard);
     });
   }
+
+  resetForm() {
+    this._form.reset();
+  }
+
+  close () {
+    super.close()
+    this.resetForm()
+  }
 }
 
 

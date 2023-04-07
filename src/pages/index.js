@@ -60,18 +60,16 @@ const popupTrash = new PopupWithFormSubmit ('.popup_trash', (card) => {
   popupTrash.renderDeleting (true)
   api.deleteCard(card.id)
   .then(() => {
-
     card.deleteCard(card.element)
   })
   .then(() => {
-    popupTrash.renderDeleting (false)
+    popupTrash.close();
   })
   .catch((err) => {
     console.log(err);
   })
   .finally(() => {
-    popupTrash.close();
-
+    popupTrash.renderDeleting (false)
   });
 });
 popupTrash.setEventListeners ();
@@ -112,7 +110,7 @@ const creatingCard = (item) => {
 
 const cardList = new Section ({
   renderer: (cardItem) => {
-      cardList.setItem(creatingCard (cardItem));
+      cardList.setAppendItems(creatingCard (cardItem));
     }
   },
   '.place__card')
@@ -131,17 +129,18 @@ export const popupPlace = new PopupWithForm ('.popup_place',
     popupPlace.renderLoading(true);
     api.setNewCard(formData.addNamePlace, formData.addLinkPlace)
     .then((data) => {
-      cardList.setItem(creatingCard (data));
+      cardList.setPrependItem(creatingCard (data));
     })
     .then(() => {
-      formPlaceValidator.resetValidation();
+      popupPlace.close();
     })
     .catch((err) => {
       console.log(err);
+//      popupPlace.resetForm()
     })
     .finally(() => {
-      popupPlace.close();
       popupPlace.renderLoading(false);
+      formPlaceValidator.resetValidation();
     });
 })
 popupPlace.setEventListeners ();
@@ -167,13 +166,13 @@ const popupProfileData = new PopupWithForm ('.popup_profile', (data) => {
     profileInfo.setUserInfo(data);
   })
   .then(() => {
-    formProfileValidator.resetValidation();
+    popupProfileData.close();
   })
   .catch((err) => {
     console.log(err);
   })
   .finally(() => {
-    popupProfileData.close();
+    formProfileValidator.resetValidation();
     popupProfileData.renderLoading(false);
   });
 })
@@ -201,14 +200,15 @@ const popupAvatarChange = new PopupWithForm ('.popup_avatar', (data) => {
     profileInfo.setUserInfo(data)
   })
   .then(() => {
-    popupAvatarChange.renderLoading(false);
+    popupAvatarChange.close();
   })
   .catch((err) => {
     console.log(err);
   })
   .finally(() => {
-    popupAvatarChange.close();
-  });
+    formAvatarValidator.resetValidation();
+    popupAvatarChange.renderLoading(false);
+  })
 })
 popupAvatarChange.setEventListeners();
 
