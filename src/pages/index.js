@@ -127,11 +127,13 @@ popupImage.setEventListeners ();
 export const popupPlace = new PopupWithForm ('.popup_place',
   (formData) => {
     popupPlace.renderLoading(true);
+
     api.setNewCard(formData.addNamePlace, formData.addLinkPlace)
     .then((data) => {
       cardList.setPrependItem(creatingCard (data));
     })
     .then(() => {
+      formPlaceValidator.resetValidation();
       popupPlace.close();
     })
     .catch((err) => {
@@ -139,8 +141,9 @@ export const popupPlace = new PopupWithForm ('.popup_place',
 //      popupPlace.resetForm()
     })
     .finally(() => {
+
       popupPlace.renderLoading(false);
-      formPlaceValidator.resetValidation();
+
     });
 })
 popupPlace.setEventListeners ();
@@ -166,13 +169,13 @@ const popupProfileData = new PopupWithForm ('.popup_profile', (data) => {
     profileInfo.setUserInfo(data);
   })
   .then(() => {
+    formProfileValidator.resetValidation();
     popupProfileData.close();
   })
   .catch((err) => {
     console.log(err);
   })
   .finally(() => {
-    formProfileValidator.resetValidation();
     popupProfileData.renderLoading(false);
   });
 })
