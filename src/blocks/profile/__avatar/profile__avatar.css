@@ -17,7 +17,6 @@
   width: 102%;
   background-repeat: no-repeat;
   background-position: center;
-  /* pointer-events: none; */
 }
 
 .profile__avatar:hover::after {

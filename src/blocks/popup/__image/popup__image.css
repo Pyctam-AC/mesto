@@ -5,10 +5,4 @@
   max-height: 75vh;
   object-fit: cover;
 }
-/*
-@media screen and (max-width: 768px) {
-  .popup__image {
-    min-width: 240px;
-    min-height: 299px;
-  }
-}*/
+

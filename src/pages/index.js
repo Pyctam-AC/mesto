@@ -23,7 +23,7 @@ import FormValidator from '../components/FormValidator.js';
 
 import UserInfo from '../components/UserInfo.js';
 
-import Api from '../components/Api.js'
+import Api from '../utils/Api.js'
 
 let userID = '';
 
@@ -39,7 +39,6 @@ const api = new Api({
 
 Promise.all([api.getInfoProfile(), api.getInitialCards()])
   .then(([userInfo, cards]) => {
-    //console.log(userInfo, cards);
     profileInfo.setUserInfo(userInfo)
     userID = userInfo._id
     cardList.renderItems(cards)

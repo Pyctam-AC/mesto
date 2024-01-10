@@ -47,7 +47,11 @@
 
   <!--footer-->
   <footer class="footer">
-    <p class="footer__text">© 2020 Mesto Russia</p>
+    <p class="footer__text" id="currentYear"></p>
+    <script>
+        document.getElementById('currentYear').innerHTML = new Date().getFullYear();
+    </script>
+    <p class="footer__text">© Rustam Sultangaliev</p>
   </footer>
 
   <!--pop-up-profile-->

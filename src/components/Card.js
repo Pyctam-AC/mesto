@@ -54,7 +54,6 @@ export default class Card {
   _setEventListeners () {
     this._likeElementCard.addEventListener('click', () => {
       this._handleLikeClick(this);
-/*       this._handleLike(); */
     });
 
     this._trashButton.addEventListener('click', () => {
@@ -80,42 +79,4 @@ export default class Card {
     elementCard = null;
   }
 }
-
-  /*  this._placeImage = data.link;
-    this._placeTitle = data.name;
-    this._likes = data.likes;
-    this._id = data._id;
-    this._ownerCardID = data.owner._id;
- */
-
-    /*     this._imageCard = this.element.querySelector('.place__img');
-    this._imageCard.src = this._placeImage;
-    this._imageCard.alt = this._placeTitle;
-  //  this._likes.length = this._likeNumber;
-    this.element.querySelector('.place__title').textContent = this._placeTitle;
-    this.element.querySelector('.place__like').textContent = this._likes.length; */
-
-    /*   likeNumber (likeNumber) {
-    return likeNumber.length
-  }
- */
-
-/*   userID (idUser) {
-    return this._idUser = idUser
-  }
-
-  setDataCard (data) {
-    return this._data = {
-      link: data.link,
-      name: data.name,
-      likes: data.likes,
-      idCard: data._id,
-      idOwner: data.owner._id
-    }
-  } */
-
-  /*     this._imageCard.src = this._data.link;
-    this._imageCard.alt = this._data.name;
-    this.element.querySelector('.place__title').textContent = this._data.name;
-    this.element.querySelector('.place__like').textContent = this._data.likes.length; */
 
