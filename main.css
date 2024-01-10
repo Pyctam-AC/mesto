@@ -39,8 +39,8 @@
 .place__container-like{align-items:center;display:flex;flex-direction:column;justify-content:center;margin:0 0 0 29px;padding:0}
 .like-button_active{background-image:url(35948469632d0421d697.svg)}
 .popup__close-button_img{right:0;top:-30px}@media screen and (max-width:890px){.popup__close-button_img{right:40px;top:-15px}}
-.footer{margin:47px auto 60px;max-width:880px}@media screen and (max-width:890px){.footer{margin:29px 20px 34px}}
-.footer__text{color:#545454;font-family:inter,Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;line-height:22px;margin:0}@media screen and (max-width:580px){.footer__text{font-size:14px;line-height:17px}}
+.footer{display:flex;margin:47px auto 60px;max-width:880px}@media screen and (max-width:890px){.footer{margin:29px 20px 34px}}
+.footer__text{color:#545454;font-family:inter,Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;line-height:22px;margin:0 10px 0 0}@media screen and (max-width:580px){.footer__text{font-size:14px;line-height:17px}}
 
 
 /*# sourceMappingURL=main.css.map*/
